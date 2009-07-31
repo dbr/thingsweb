@@ -1,0 +1,34 @@
+body{
+    background: #B7BCC4 url('/img/backgroundpattern.png') repeat;
+}
+#main{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:5em;
+    width:35em;
+}
+#head{
+    background: url('/img/ThingsIcon.png') no-repeat;
+    height:128px;
+    
+}
+#head h1{
+    display:none;
+}
+ul{
+    padding:0;
+}
+ul li{
+    background:#fff;
+
+    list-style:none;
+    border: 1px solid #7A7A7A;
+    -moz-border-radius: 5px;
+
+    padding: 2px 0 0 7px;
+    line-height:26px;
+}
+ul li img{
+    vertical-align: middle;
+    margin: 0 0 2px 0;
+}
