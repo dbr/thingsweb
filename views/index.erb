@@ -1,7 +1,14 @@
-<ul>
-    <% @todo.today.each do |t| %>
-    <li>
-        <%= t['title'] %>
-    </li>
-    <% end %>
+<h2>Inbox</h2>
+<ul id="inbox">
+    <%= erb(:list_todo, :layout => false, :locals => {:todos => @todo.inbox}) %>
+</ul>
+
+<h2>Today</h2>
+<ul id="today">
+    <%= erb(:list_todo, :layout => false, :locals => {:todos => @todo.today}) %>
+</ul>
+
+<h2>Next</h2>
+<ul id="today">
+    <%= erb(:list_todo, :layout => false, :locals => {:todos => @todo.next}) %>
 </ul>
