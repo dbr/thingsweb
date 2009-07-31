@@ -7,4 +7,4 @@ require 'lib/parser'
 
 # require 'PP'
 # todo = ThingsDb::Todo.new
-# pp todo.inbo
+# pp todo.all
