@@ -9,18 +9,36 @@ module ThingsDb
       @todos ||= self.load_xml
     end
 
-    def today
-      self.all.find_all{|c|
-        c['focustype'] == 65536
-      }
-    end
-    
     def inbox
+      self.by_focustype(:inbox)
+    end
+
+    def deleted
+      self.by_focustype(:deleted)
+    end
+
+    def logbook
+      self.by_focustype(:logbook)
+    end
+
+    def today
+      self.by_focustype(:today)
+    end
+
+    def next
+      self.by_focustype(:next)
+    end
+
+    def someday
+      self.by_focustype(:someday)
+    end
+
+    def by_focustype(focustype)
       self.all.find_all{|c|
-        c['focustype'] == 1
+        c.focustype == focustype
       }
     end
-    
+
     def load_xml
       xml_data = File.read(@dbfile)
 
@@ -52,10 +70,52 @@ module ThingsDb
 
             t[name] = val
           end
-          todos << t
+          todos << Thing.new(t)
         end
       end
       todos
     end #load_xml
   end
+
+  class Thing
+    STATUSES = {
+      0 => :notdone,
+      3 => :done,
+    }
+    FOCUSTYPES = {
+      1 => :inbox,
+      256 => :deleted,
+      512 => :logbook,
+      65536 => :today,
+      131072 => :next,
+      33554432 => :someday,
+    }
+
+    attr_reader :title, :status, :focustype, :index, :datecreated,
+    :datemodified, :identifier
+
+    def initialize(todo)
+      @title = todo['title']
+      @index = todo['index']
+      @datecreated = todo['datecreated']
+      @datemodified = todo['datemodified']
+
+      @status = STATUSES[todo['status']]
+      @focustype = FOCUSTYPES[todo['focustype']]
+
+      @identifier = todo['identifier']
+    end
+
+    def done?
+      @status == :done
+    end
+
+    def ==(other)
+      other.identifier == @identifier
+    end
+    alias_method :===, :==
+  end
 end
+
+t = ThingsDb::Todo.new
+puts t.inbox
