@@ -1,0 +1,10 @@
+<% todos.each do |t|%>
+<li>
+	<% if t.done? %>
+		<img src="img/checkbox_done-N.png" width="16" height="16" border="0">
+	<% else %>
+		<img src="img/checkbox_flat-N.png" width="16" height="16" border="0">
+	<% end %>
+	<%= t.title %>
+</li>
+<% end %>
