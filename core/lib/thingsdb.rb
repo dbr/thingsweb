@@ -9,6 +9,8 @@ module ThingsDb
       @todos ||= self.load_xml
     end
 
+    # Accessors for todos in specific locations
+
     def inbox
       self.by_focustype(:inbox)
     end
@@ -31,6 +33,21 @@ module ThingsDb
 
     def someday
       self.by_focustype(:someday)
+    end
+
+    # Status accessors
+    def complete
+      self.by_status(:complete)
+    end
+
+    def incomplete
+      self.by_status(:incomplete)
+    end
+
+    def by_status(status)
+      self.all.find_all{|c|
+        c.status == status
+      }
     end
 
     def by_focustype(focustype)
@@ -79,8 +96,8 @@ module ThingsDb
 
   class Thing
     STATUSES = {
-      0 => :notdone,
-      3 => :done,
+      0 => :incomplete,
+      3 => :complete,
     }
     FOCUSTYPES = {
       1 => :inbox,
@@ -106,8 +123,8 @@ module ThingsDb
       @identifier = todo['identifier']
     end
 
-    def done?
-      @status == :done
+    def complete?
+      @status == :complete
     end
 
     def ==(other)
