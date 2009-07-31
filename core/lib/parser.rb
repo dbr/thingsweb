@@ -1,7 +1,7 @@
 module ThingsDb
   class Todo
     def initialize(dbfile=nil)
-      @dbfile = dbfile || "/Users/dbr/Library/Application Support/Cultured Code/Things/Database.xml"
+      @dbfile = dbfile || File.expand_path("~/Library/Application Support/Cultured Code/Things/Database.xml")
       self.all
     end
 
