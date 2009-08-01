@@ -9,53 +9,61 @@ module ThingsDb
       @todos ||= self.load_xml
     end
 
-    # Accessors for todos in specific locations
-
+    # Access todo's in the inbox
     def inbox
       self.by_focustype(:inbox)
     end
 
+    # Access todo's in the trash
     def deleted
       self.by_focustype(:deleted)
     end
 
+    # Access todo's in the logbook
     def logbook
       self.by_focustype(:logbook)
     end
 
+    # Access todo's flagged as today
     def today
       self.by_focustype(:today)
     end
 
+    # Access todo's in next
     def next
       self.by_focustype(:next)
     end
 
+    # Access todo's in "someday"
     def someday
       self.by_focustype(:someday)
     end
 
-    # Status accessors
+    # Return all completed todo's
     def complete
       self.by_status(:complete)
     end
 
+    # Return all incomplete todo's
     def incomplete
       self.by_status(:incomplete)
     end
 
+    # Returns todo's with a specific status
     def by_status(status)
       self.all.find_all{|c|
         c.status == status
       }
     end
 
+    # Return todo's with specific focus (sections like Inbox/Today/etc)
     def by_focustype(focustype)
       self.all.find_all{|c|
         c.focustype == focustype
       }
     end
 
+    # Loads the Database.xml
     def load_xml
       xml_data = File.read(@dbfile)
 
@@ -133,6 +141,3 @@ module ThingsDb
     alias_method :===, :==
   end
 end
-
-t = ThingsDb::Todo.new
-puts t.inbox
