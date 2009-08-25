@@ -15,7 +15,7 @@ module ThingsDb
     end
 
     # Access todo's in the trash
-    def deleted
+    def trash
       self.by_focustype(:deleted)
     end
 
