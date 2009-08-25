@@ -11,5 +11,7 @@ end
 
 get('/by_focustype/:name') do
   todos = ThingsDb::Todo.new.by_focustype(params['name'].to_sym)
-  JSON.dump(todos)
+
+  html = erb(:list_todo, :layout => false, :locals => {:todos => todos})
+  JSON.dump(html)
 end

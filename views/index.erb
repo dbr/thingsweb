@@ -10,56 +10,9 @@
 <ul id="someday">
     <%= erb(:list_todo, :layout => false, :locals => {:todos => @todo.someday}) %>
 </ul>
-
-<script type="text/javascript" charset="utf-8">
-    var hidealltodos = function(){
-        $("#todo ul").each(function(){
-            $(this).hide();
-        });
-    };
-
-    var changebox = function(boxname){
-        hidealltodos();
-
-        var boxid = $('#' + boxname);
-        /* Clear the list */
-        boxid.html('');
-        boxid.show();
-
-        $('#expand_' + boxname).bind('click', function(e){
-
-            $.getJSON('/by_focustype/' + boxname, function(data){
-                data.forEach(function(todo){
-                    boxid.append('<li>' + todo.title + '</li>');
-                });
-            });
-        });
-    };
-
-    var check_or_redirect = function(){
-        var myFile = document.location.toString();
-
-        myFile.search(/#(.+)/);
-
-        if(RegExp.$1){
-            var box = RegExp.$1;
-            if(['inbox', 'today', 'next', 'someday', 'projects',
-                'logbook', 'trash'].indexOf(box) > 0){
-                    changebox(box);
-                    return;
-            }
-        }
-        window.location.replace("#inbox");
-    };
-
-    $("#sidebar a").each(function(){
-        $(this).bind('click', function(){
-            this.id.search(/expand_(.+)$/);
-            changebox(RegExp.$1);
-        });
-    });
-
-    $(document).ready(function () {
-        check_or_redirect();
-    });
-</script>
+<ul id="logbook">
+    <%= erb(:list_todo, :layout => false, :locals => {:todos => @todo.logbook}) %>
+</ul>
+<ul id="logbook">
+    <%= erb(:list_todo, :layout => false, :locals => {:todos => @todo.trash}) %>
+</ul>
