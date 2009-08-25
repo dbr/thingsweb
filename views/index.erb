@@ -15,29 +15,32 @@
     var hidealltodos = function(){
         $("#todo ul").each(function(){
             $(this).hide();
-        })
-    }
+        });
+    };
+
     var changebox = function(boxname){
         hidealltodos();
-        
+
         var boxid = $('#' + boxname);
+        /* Clear the list */
+        boxid.html('');
         boxid.show();
-        
+
         $('#expand_' + boxname).bind('click', function(e){
 
             $.getJSON('/by_focustype/' + boxname, function(data){
                 data.forEach(function(todo){
-                    boxid.append('<li>'+todo['title']+'</li>')
+                    boxid.append('<li>' + todo.title + '</li>');
                 });
-            })
-        })
-    }
-    
+            });
+        });
+    };
+
     var check_or_redirect = function(){
         var myFile = document.location.toString();
-    
+
         myFile.search(/#(.+)/);
-    
+
         if(RegExp.$1){
             var box = RegExp.$1;
             if(['inbox', 'today', 'next', 'someday', 'projects',
@@ -47,16 +50,16 @@
             }
         }
         window.location.replace("#inbox");
-    }
-    
+    };
+
     $("#sidebar a").each(function(){
         $(this).bind('click', function(){
             this.id.search(/expand_(.+)$/);
             changebox(RegExp.$1);
         });
     });
-    
+
     $(document).ready(function () {
         check_or_redirect();
-    })
+    });
 </script>
