@@ -4,11 +4,72 @@
 <head>
     <title>Things WebUI</title>
     <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="/js/jquery-1.3.2.min.js" charset="utf-8">
+    </script>
 <head>
 <body>
     <div id="main">
         <div id="head">
             <h1>Things Web UI</h1>
+        </div>
+        <div id="sidebar">
+            <ul>
+                <li class="heading">
+                    Collect
+                </li>
+                <li class="button">
+                    <a href="#inbox" id="expand_inbox">
+                        <img src="/img/sidebar/inbox.png">
+                        Inbox
+                    </a>
+
+                </li>
+                <li class="heading">
+                    Focus
+                </li>
+                <li class="button">
+                    <a href="#today" id="expand_today">
+                        <img src="/img/sidebar/today.png">
+                        Today
+                    </a>
+                </li>
+                <li class="button">
+                    <a href="#next" id="expand_next">
+                        <img src="/img/sidebar/next.png">
+                        Next
+                    </a>
+                </li>
+                <li class="button">
+                    <a href="#someday" id="expand_someday">
+                        <img src="/img/sidebar/someday.png">
+                        Someday
+                    </a>
+                </li>
+                <li class="button">
+                    <a href="#projects" id="expand_projects">
+                        <img src="/img/sidebar/projects.png">
+                        Projects
+                    </a>
+                </li>
+                
+                <li class="heading">
+                    Other
+                </li>
+                <li class="button">
+                    <a href="#logbook" id="expand_logbook">
+                        <img src="/img/sidebar/logbook.png">
+
+                        Logbook
+                    </a>
+                </li>
+                <li class="button">
+                    <a href="#trash" id="expand_trash">
+                        <img src="/img/sidebar/trash.png">
+                        Trash
+                    </a>
+                </li>
+                
+            </ul>
         </div>
         <div id="todo">
 			<%= yield %>

@@ -1,11 +1,16 @@
 body{
+    font-family: "Lucida Grande", sans-serif;
+    font-size:0.8em;
     background: #B7BCC4 url('/img/backgroundpattern.png') repeat;
+}
+img{
+    border:0;
 }
 #main{
     margin-left:auto;
     margin-right:auto;
     margin-top:5em;
-    width:35em;
+    width:40em;
 }
 #head{
     background: url('/img/ThingsIcon.png') no-repeat;
@@ -15,10 +20,51 @@ body{
 #head h1{
     display:none;
 }
-ul{
+
+#sidebar{
+    float:left;
+    width:10em;
+    background-color:#EDEDED;
+    border-right: 1px solid #999;
+}
+
+#sidebar a{
+    text-decoration:none;
+    color:#000;
+}
+
+#sidebar ul{
     padding:0;
 }
-ul li{
+
+#sidebar ul li{
+    list-style:none;
+}
+
+#sidebar .heading{
+    font: normal small-caps bold 1em Monaco, sans-serif;
+    color:#545454;
+    padding: .5em 0 0 0.75em !important;
+}
+
+#sidebar .button{
+    /*T R L B*/
+    padding: 0 1em 0 1.5em !important;
+}
+
+#sidebar .active{
+    background: #f0f url('/img/sidebar/highlight.png') repeat-x;
+}
+
+#todo{
+    float:right;
+    width:28em;
+}
+
+#todo ul{
+    padding:0;
+}
+#todo ul li{
     background:#fff;
 
     list-style:none;
@@ -28,7 +74,7 @@ ul li{
     padding: 2px 0 0 7px;
     line-height:26px;
 }
-ul li img{
+#todo ul li img{
     vertical-align: middle;
     margin: 0 0 2px 0;
 }

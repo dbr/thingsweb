@@ -11,5 +11,5 @@ end
 
 get('/by_focustype/:name') do
   todos = ThingsDb::Todo.new.by_focustype(params['name'].to_sym)
-  "<pre>#{JSON.dump(todos.to_a)}</pre>"
+  JSON.dump(todos)
 end

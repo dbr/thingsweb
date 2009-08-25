@@ -129,6 +129,8 @@ module ThingsDb
       @focustype = FOCUSTYPES[todo['focustype']]
 
       @identifier = todo['identifier']
+      
+      @orig = todo
     end
 
     def complete?
@@ -139,5 +141,9 @@ module ThingsDb
       other.identifier == @identifier
     end
     alias_method :===, :==
+    
+    def to_json(*a)
+      @orig.to_json(*a)
+    end
   end
 end
