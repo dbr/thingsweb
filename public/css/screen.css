@@ -26,6 +26,8 @@ img{
     width:10em;
     background-color:#EDEDED;
     border-right: 1px solid #999;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 #sidebar a{
@@ -70,6 +72,7 @@ img{
     list-style:none;
     border: 1px solid #7A7A7A;
     -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 
     padding: 2px 0 0 7px;
     line-height:26px;
